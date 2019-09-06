@@ -1,12 +1,17 @@
 import React from 'react';
+import CasinoJuego from './CasinoJuego';
+import CasinoControls from './CasinoControls';
 
 type CasinoProps = {};
 type CasinoState = {};
 
 export default class Casino extends React.Component<CasinoProps, CasinoState> {
-    render(){
+    render() {
         return (
-            <h1>Es un casino</h1>
+            <div>
+                <CasinoControls />
+                <CasinoJuego />
+            </div>
         )
     }
 }
