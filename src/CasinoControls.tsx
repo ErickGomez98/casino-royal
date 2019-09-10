@@ -34,16 +34,20 @@ const CasinoControls: React.FC = (props) => {
                 <Moneda denominacion={10} />
                 <Moneda denominacion={20} />
             </div>
-
             <div className="divider"></div>
-
-
             <div className="creditos-selector-container">
                 <h2>Cargar créditos</h2>
                 <CreditosSelectItem denominacion={1} />
                 <CreditosSelectItem denominacion={2} />
                 <CreditosSelectItem denominacion={5} />
                 <CreditosSelectItem denominacion={10} />
+            </div>
+            <div className="divider"></div>
+            <div className="creditos-totales-container">
+                <div>
+                    <h2>Créditos: </h2>
+                </div>
+                <div className="creditos-totales">550</div>
             </div>
 
         </div>

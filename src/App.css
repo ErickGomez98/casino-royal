@@ -55,7 +55,7 @@ body, html {
   margin: 20px 0;
 }
 
-.creditos-selector-container {
+.creditos-selector-container, .creditos-totales-container {
   width: 100%;
   float:left;
 }
@@ -84,4 +84,16 @@ body, html {
 
 .creditos-selector-container .creditos-select-item div {
   margin-top: 13px;
+}
+
+.creditos-totales-container div {
+  float: left;
+}
+
+.creditos-totales{
+  margin-left: 20px;
+    font-size: 25px;
+    font-weight: 800;
+    color: #28A745;
+    padding: 20px;
 }
