@@ -6,9 +6,43 @@ body, html {
 
 .casino-main-container {
   width: 100%;
+  margin: 20px;
 }
 
 .casino-controls-container, .casino-juego-container {
   width: 50%;
   float: left;
+}
+
+.main-controles-container, .monedas-container {
+  width: 100%;
+}
+
+.monedas-container .moneda {
+  width: 50px;
+  height: 50px;
+  float:left;
+  text-align: center;
+  border: 5px solid #B76A04;
+  border-radius: 50%;
+  vertical-align: middle;
+  background: #F1B834;
+  margin: 0 10px;
+  position: relative;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.moneda-txt {
+  text-align: center;
+  color: #B76A04;
+  font-weight: 600;
+  font-size: 20px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.monedas-container .moneda:hover {
+  width: 55px;
+  height: 55px;
 }
