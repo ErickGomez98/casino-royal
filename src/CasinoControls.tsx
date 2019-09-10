@@ -1,28 +1,51 @@
 import React from 'react';
 
-const Moneda: React.FC<any> = (props) => {
+
+type ItemProps = {
+    denominacion: number
+};
+
+
+const Moneda: React.FC<ItemProps> = (props) => {
     return (
-        <div {...props} className="moneda-txt">{props.denominacion}</div>
+        <div className="moneda">
+            <div {...props} className="moneda-txt">{props.denominacion}</div>
+        </div>
+    )
+}
+
+const CreditosSelectItem: React.FC<ItemProps> = (props) => {
+    return (
+        <div className="creditos-select-item">
+            <div>{props.denominacion}</div>
+        </div>
     )
 }
 
 const CasinoControls: React.FC = (props) => {
     return (
         <div className="main-controles-container">
-            <div className="monedas-container">
-                <div className="moneda">
-                    <Moneda denominacion={2} />
-                </div>
-                <div className="moneda">
-                    <Moneda denominacion={5} />
-                </div>
-                <div className="moneda">
-                    <Moneda denominacion={10} />
-                </div>
-                <div className="moneda">
-                    <Moneda denominacion={20} />
-                </div>
+            <div className="monedas-title">
+                <h2>Monedas disponibles</h2>
             </div>
+            <div className="monedas-container">
+                <Moneda denominacion={2} />
+                <Moneda denominacion={5} />
+                <Moneda denominacion={10} />
+                <Moneda denominacion={20} />
+            </div>
+
+            <div className="divider"></div>
+
+
+            <div className="creditos-selector-container">
+                <h2>Cargar créditos</h2>
+                <CreditosSelectItem denominacion={1} />
+                <CreditosSelectItem denominacion={2} />
+                <CreditosSelectItem denominacion={5} />
+                <CreditosSelectItem denominacion={10} />
+            </div>
+
         </div>
     )
 };
