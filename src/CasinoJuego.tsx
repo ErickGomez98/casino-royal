@@ -14,15 +14,23 @@ const CasinoJuegoSlot: React.FC<any> = (props) => {
 };
 
 type PalacncaProps = {
-    onClickJugar: React.MouseEvent;
+    onClickJugar: Function;
+    playing: boolean;
 }
 
-const Palanca: React.FC<any> = (props) => {
+const Palanca: React.FC<PalacncaProps> = (props) => {
     return (
         <div onClick={() => props.onClickJugar()}>
             <div className="medio-circulo"></div>
-            <div className="palanca"></div>
-            <div className="palanca-head"></div>
+            {!props.playing
+                ? <div className="palanca"></div>
+                : <div className="palanca active"></div>
+            }
+
+            {!props.playing
+                ? <div className="palanca-head"></div>
+                : <div className="palanca-head active"></div>
+            }
         </div>
     )
 };
@@ -33,15 +41,33 @@ type CasinoJuegoProps = {
     jugable: boolean;
 }
 
-class CasinoJuego extends React.Component<CasinoJuegoProps, {}> {
+type CasinoState = {
+    playing: boolean;
+}
+
+class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
+    state: CasinoState = {
+        playing: false
+    }
+
+
 
     jugar = () => {
         if (!this.props.jugable) {
             alert("no hay créditos para jugar");
+        } else {
+            this.startPlaying();
         }
     }
 
+    startPlaying = () => {
+        this.setState({
+            playing: true
+        });
+    }
+
     render() {
+        const { playing } = this.state;
         return (
             <div className="main-juego-container">
                 <div>
@@ -52,7 +78,7 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, {}> {
                     <CasinoJuegoSlot bg={seven} />
                     <CasinoJuegoSlot bg={cherry} />
                     <CasinoJuegoSlot bg={bar} />
-                    <Palanca onClickJugar={this.jugar} />
+                    <Palanca onClickJugar={this.jugar} playing={playing} />
                 </div>
             </div>
         )
