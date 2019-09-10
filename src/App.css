@@ -156,15 +156,15 @@ body, html {
   position: absolute;
   top: 33%;
   right: -6%;
-  border-radius: 50%;
   z-index: -1;
+  border-radius: 50%;
   border: 4px solid #500A2E;
   -webkit-box-shadow:inset -10px -10px 1px 1px #59A6BA;
   box-shadow:inset -10px -10px 1px 1px #59A6BA;
 }
 
 .palanca {
-  position: absolute;
+    position: absolute;
     top: 9%;
     right: -8%;
     background: #6CCEE9;
@@ -173,12 +173,11 @@ body, html {
     box-shadow:inset -10px -10px 1px 1px #59A6BA;
     border: 4px solid #500A2E;
     border-radius: 30%;
-    z-index: -2;
 }
 
 .palanca-head {
-  position: absolute;
-    top: -16px;
+    position: absolute;
+    top: -16%;
     right: -10%;
     width: 60px;
     height: 60px;
@@ -186,4 +185,13 @@ body, html {
     background: red;
     box-shadow:inset -6px -6px 1px 1px #BD3343;
     border: 4px solid #500A2E;
+}
+
+
+.palanca.active {
+  top: 45%;
+}
+
+.palanca-head.active{
+  top: 93%;
 }
