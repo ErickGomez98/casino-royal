@@ -19,9 +19,10 @@ const CasinoJuego: React.FC = () => {
                 <CasinoJuegoSlot bg="ab" />
                 <CasinoJuegoSlot bg="cd" />
                 <CasinoJuegoSlot bg="ef" />
+                <div className="medio-circulo"></div>
+                <div className="palanca"></div>
+                <div className="palanca-head"></div>
             </div>
-            <div></div>
-            <div></div>
         </div>
     )
 };
