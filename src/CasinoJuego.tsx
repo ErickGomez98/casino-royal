@@ -4,14 +4,15 @@ import cherry from './img/cherry_img.png';
 import bell from './img/bell_img.png';
 import seven from './img/seven_img.png';
 
-const CasinoJuegoSlot: React.FC<any> = (props) => {
+const CasinoJuegoSlot: React.FC<{ bg: any }> = (props) => {
     return (
         <div className="casino-juego-slot">
             <img src={props.bg} alt="img" />
 
         </div>
     )
-};
+}
+
 
 type PalacncaProps = {
     onClickJugar: Function;
@@ -45,11 +46,14 @@ type CasinoJuegoProps = {
 
 type CasinoState = {
     playing: boolean;
+    // results: Array<Array<number>>
+    results: any
 }
 
 class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
     state: CasinoState = {
-        playing: false
+        playing: false,
+        results: []
     }
 
 
@@ -58,7 +62,9 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
         if (!this.props.jugable) {
             this.props.showError("No hay créditos disponibles para jugar");
         } else {
-            this.startPlaying();
+            if (!this.state.playing) {
+                this.startPlaying();
+            }
         }
     }
 
@@ -66,20 +72,66 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
         this.setState({
             playing: true
         });
+        this.generarResultadosRandom();
+    }
+
+    generarResultadosRandom = () => {
+        const results = [];
+        for (let i = 0; i < 100; i++) {
+            results.push(
+                [
+                    Math.floor(Math.random() * 4) + 1,
+                    Math.floor(Math.random() * 4) + 1,
+                    Math.floor(Math.random() * 4) + 1,
+                    Math.floor(Math.random() * 4) + 1
+                ]
+            )
+        }
+
+        results.map((item, k) => {
+            let tpl: any = [];
+            for (let i = 0; i < item.length; i++) {
+                switch (item[i]) {
+                    case 1:
+                        tpl.push(<CasinoJuegoSlot key={i} bg={bell} />)
+                        break;
+                    case 2:
+                        tpl.push(<CasinoJuegoSlot key={i} bg={seven} />)
+                        break;
+                    case 3:
+                        tpl.push(<CasinoJuegoSlot key={i} bg={cherry} />)
+                        break;
+                    case 4:
+                        tpl.push(<CasinoJuegoSlot key={i} bg={bar} />)
+                        break;
+                }
+            }
+            setTimeout(() => {
+                this.setState({
+                    results: tpl
+                });
+            }, k * 100);
+        })
+
+        setTimeout(() => {
+            this.setState({
+                playing: false
+            })
+        }, (results.length + 1) * 100);
+
+
+
     }
 
     render() {
-        const { playing } = this.state;
+        const { playing, results } = this.state;
         return (
             <div className="main-juego-container">
                 <div>
                     <h2>Casino Juego</h2>
                 </div>
                 <div className="caja-juego">
-                    <CasinoJuegoSlot bg={bell} />
-                    <CasinoJuegoSlot bg={seven} />
-                    <CasinoJuegoSlot bg={cherry} />
-                    <CasinoJuegoSlot bg={bar} />
+                    {results}
                     <Palanca onClickJugar={this.jugar} playing={playing} />
                 </div>
             </div>
