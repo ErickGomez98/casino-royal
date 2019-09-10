@@ -49,6 +49,15 @@ const CasinoControls: React.FC = (props) => {
                 </div>
                 <div className="creditos-totales">550</div>
             </div>
+            <div className="divider"></div>
+            <div className="cobrar-creditos-container">
+                <div>
+                    <button type="button" className="boton-cobrar">Cobrar</button>
+                </div>
+                <div className="creditos-cobrados-result">
+                    creditos-cobrados
+                </div>
+            </div>
 
         </div>
     )
