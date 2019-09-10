@@ -40,6 +40,7 @@ const Palanca: React.FC<PalacncaProps> = (props) => {
 type CasinoJuegoProps = {
     jugable: boolean;
     showError: Function;
+    showSuccess: Function;
 }
 
 type CasinoState = {

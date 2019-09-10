@@ -32,6 +32,10 @@ export default class Casino extends React.Component<CasinoProps, CasinoState> {
         NotificationManager.error(message, null, 3000);
     }
 
+    showSuccessMsg = (message: string) => {
+        NotificationManager.success(message, null, 3000);
+    }
+
 
     render() {
         const { playable, creditosTotales } = this.state;
@@ -41,7 +45,7 @@ export default class Casino extends React.Component<CasinoProps, CasinoState> {
                     <CasinoControls creditosTotales={creditosTotales} controlarCreditos={(creditos: number) => this.controlCredits(creditos)} />
                 </div>
                 <div className="casino-juego-container">
-                    <CasinoJuego jugable={playable} showError={this.showErrorMsg} />
+                    <CasinoJuego jugable={playable} showError={this.showErrorMsg} showSuccess={this.showSuccessMsg} />
                 </div>
                 <NotificationContainer />
             </div>
