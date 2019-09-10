@@ -39,6 +39,7 @@ const Palanca: React.FC<PalacncaProps> = (props) => {
 
 type CasinoJuegoProps = {
     jugable: boolean;
+    showError: Function;
 }
 
 type CasinoState = {
@@ -54,7 +55,7 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
 
     jugar = () => {
         if (!this.props.jugable) {
-            alert("no hay créditos para jugar");
+            this.props.showError("No hay créditos disponibles para jugar");
         } else {
             this.startPlaying();
         }

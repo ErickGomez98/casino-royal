@@ -1,5 +1,8 @@
 import React from 'react';
+// @ts-ignore
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 import './App.css';
+import 'react-notifications/lib/notifications.css';
 import CasinoJuego from './CasinoJuego';
 import CasinoControls from './CasinoControls';
 
@@ -25,6 +28,10 @@ export default class Casino extends React.Component<CasinoProps, CasinoState> {
         });
     }
 
+    showErrorMsg = (message: string) => {
+        NotificationManager.error(message, null, 3000);
+    }
+
 
     render() {
         const { playable, creditosTotales } = this.state;
@@ -34,8 +41,9 @@ export default class Casino extends React.Component<CasinoProps, CasinoState> {
                     <CasinoControls creditosTotales={creditosTotales} controlarCreditos={(creditos: number) => this.controlCredits(creditos)} />
                 </div>
                 <div className="casino-juego-container">
-                    <CasinoJuego jugable={playable} />
+                    <CasinoJuego jugable={playable} showError={this.showErrorMsg} />
                 </div>
+                <NotificationContainer />
             </div>
         )
     }
