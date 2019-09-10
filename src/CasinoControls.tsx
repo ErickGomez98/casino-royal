@@ -14,15 +14,24 @@ const Moneda: React.FC<ItemProps> = (props) => {
     )
 }
 
-const CreditosSelectItem: React.FC<ItemProps> = (props) => {
+type CreditosSelectItemProps = {
+    denominacion: number,
+    controlarCreditos: Function
+}
+
+const CreditosSelectItem: React.FC<CreditosSelectItemProps> = (props) => {
     return (
-        <div className="creditos-select-item">
+        <div className="creditos-select-item" onClick={() => props.controlarCreditos(props.denominacion)}>
             <div>{props.denominacion}</div>
         </div>
     )
 }
 
-const CasinoControls: React.FC = (props) => {
+type CasinoControlsProps = {
+    creditosTotales: number;
+    controlarCreditos: Function;
+}
+const CasinoControls: React.FC<CasinoControlsProps> = (props) => {
     return (
         <div className="main-controles-container">
             <div className="monedas-title">
@@ -37,17 +46,17 @@ const CasinoControls: React.FC = (props) => {
             <div className="divider"></div>
             <div className="creditos-selector-container">
                 <h2>Cargar créditos</h2>
-                <CreditosSelectItem denominacion={1} />
-                <CreditosSelectItem denominacion={2} />
-                <CreditosSelectItem denominacion={5} />
-                <CreditosSelectItem denominacion={10} />
+                <CreditosSelectItem denominacion={1} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion)} />
+                <CreditosSelectItem denominacion={2} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion)} />
+                <CreditosSelectItem denominacion={5} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion)} />
+                <CreditosSelectItem denominacion={10} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion)} />
             </div>
             <div className="divider"></div>
             <div className="creditos-totales-container">
                 <div>
                     <h2>Créditos: </h2>
                 </div>
-                <div className="creditos-totales">550</div>
+                <div className="creditos-totales">{props.creditosTotales}</div>
             </div>
             <div className="divider"></div>
             <div className="cobrar-creditos-container">
