@@ -123,7 +123,7 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
                 this.setState({
                     results: tpl
                 });
-            }, k * 10);
+            }, k * 50);
         })
 
         setTimeout(() => {
@@ -155,7 +155,7 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
                     this.props.showSuccess("Has ganado 125 créditos!")
                 }
             }
-        }, (results.length) * 10);
+        }, (results.length) * 50);
     }
 
     render() {
