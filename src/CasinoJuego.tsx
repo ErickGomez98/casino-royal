@@ -76,8 +76,8 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
     }
 
     generarResultadosRandom = () => {
-        const results = [];
-        for (let i = 0; i < 100; i++) {
+        const results: Array<Array<Number>> = [];
+        for (let i = 0; i < 50; i++) {
             results.push(
                 [
                     Math.floor(Math.random() * 4) + 1,
@@ -117,7 +117,26 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
             this.setState({
                 playing: false
             })
-        }, (results.length + 1) * 100);
+
+            const lastResult = results[results.length - 1];
+            let isResult: number = 0;
+            console.log(lastResult);
+            for (let i = 0; i < lastResult.length; i++) {
+                let count = 0;
+                for (let j = i; j < lastResult.length; j++) {
+                    if (lastResult[i] === lastResult[j]) {
+                        count++;
+                    }
+                }
+                if (count >= 3) {
+                    isResult = count;
+                }
+            }
+
+            if (isResult > 0) {
+                console.log(`es resultado con ${isResult} coincidencias`);
+            }
+        }, (results.length) * 100);
 
 
 
