@@ -46,10 +46,10 @@ const CasinoControls: React.FC<CasinoControlsProps> = (props) => {
             <div className="divider"></div>
             <div className="creditos-selector-container">
                 <h2>Cargar créditos</h2>
-                <CreditosSelectItem denominacion={1} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion)} />
-                <CreditosSelectItem denominacion={2} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion)} />
-                <CreditosSelectItem denominacion={5} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion)} />
-                <CreditosSelectItem denominacion={10} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion)} />
+                <CreditosSelectItem denominacion={1} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion, 1)} />
+                <CreditosSelectItem denominacion={2} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion, 1)} />
+                <CreditosSelectItem denominacion={5} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion, 1)} />
+                <CreditosSelectItem denominacion={10} controlarCreditos={(denominacion: number) => props.controlarCreditos(denominacion, 1)} />
             </div>
             <div className="divider"></div>
             <div className="creditos-totales-container">

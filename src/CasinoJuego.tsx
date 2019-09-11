@@ -8,7 +8,6 @@ const CasinoJuegoSlot: React.FC<{ bg: any }> = (props) => {
     return (
         <div className="casino-juego-slot">
             <img src={props.bg} alt="img" />
-
         </div>
     )
 }
@@ -42,12 +41,12 @@ type CasinoJuegoProps = {
     jugable: boolean;
     showError: Function;
     showSuccess: Function;
+    controlarCreditos: Function;
 }
 
 type CasinoState = {
     playing: boolean;
-    // results: Array<Array<number>>
-    results: any
+    results: any;
 }
 
 class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
@@ -56,8 +55,11 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
         results: []
     }
 
-
-
+    /**
+     * Función que verifica que sea posible iniciar a jugar.
+     *
+     * @memberof CasinoJuego
+     */
     jugar = () => {
         if (!this.props.jugable) {
             this.props.showError("No hay créditos disponibles para jugar");
@@ -68,13 +70,24 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
         }
     }
 
+    /**
+     * Función que se encarga de iniciar un juego y marcar status de jugando
+     *
+     * @memberof CasinoJuego
+     */
     startPlaying = () => {
         this.setState({
             playing: true
         });
+        this.props.controlarCreditos(7, 2);
         this.generarResultadosRandom();
     }
 
+    /**
+     * Función que se encarga de generar los resultados random y determinar si son ganadores
+     *
+     * @memberof CasinoJuego
+     */
     generarResultadosRandom = () => {
         const results: Array<Array<Number>> = [];
         for (let i = 0; i < 50; i++) {
@@ -110,7 +123,7 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
                 this.setState({
                     results: tpl
                 });
-            }, k * 100);
+            }, k * 10);
         })
 
         setTimeout(() => {
@@ -120,10 +133,9 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
 
             const lastResult = results[results.length - 1];
             let isResult: number = 0;
-            console.log(lastResult);
             for (let i = 0; i < lastResult.length; i++) {
                 let count = 0;
-                for (let j = i; j < lastResult.length; j++) {
+                for (let j = 0; j < lastResult.length; j++) {
                     if (lastResult[i] === lastResult[j]) {
                         count++;
                     }
@@ -134,12 +146,16 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
             }
 
             if (isResult > 0) {
-                console.log(`es resultado con ${isResult} coincidencias`);
+                console.log(isResult);
+                if (isResult === 3) {
+                    this.props.showSuccess("Has ganado 85 créditos!");
+                    this.props.controlarCreditos(85, 1);
+                } else if (isResult === 4) {
+                    this.props.controlarCreditos(125, 1);
+                    this.props.showSuccess("Has ganado 125 créditos!")
+                }
             }
-        }, (results.length) * 100);
-
-
-
+        }, (results.length) * 10);
     }
 
     render() {
