@@ -44,6 +44,10 @@ body, html {
   margin-top: 10px;
 }
 
+.moneda-off {
+  opacity: 0.3;
+}
+
 .monedas-container .moneda:hover {
   -webkit-box-shadow: 2px 2px 2px 2px #ADADAD;
   box-shadow: 2px 2px 2px 2px #ADADAD;
