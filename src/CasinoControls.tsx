@@ -32,6 +32,8 @@ const CreditosSelectItem: React.FC<CreditosSelectItemProps> = (props) => {
 type CasinoControlsProps = {
     creditosTotales: number;
     controlarCreditos: Function;
+    showError: Function;
+    showSuccess: Function;
 }
 
 interface IMoneda {
@@ -40,7 +42,8 @@ interface IMoneda {
 }
 
 interface ICasinoState {
-    monedas: Array<IMoneda>
+    monedas: Array<IMoneda>,
+    resultadoMonedas: Object
 }
 class CasinoControls extends React.Component<CasinoControlsProps, {}> {
     state: ICasinoState = {
@@ -61,13 +64,50 @@ class CasinoControls extends React.Component<CasinoControlsProps, {}> {
                 denominacion: 20,
                 activo: true
             }
-        ]
+        ],
+        resultadoMonedas: {}
     };
 
+    /**
+     * Método que se encarga de actualizar el status active de una moneda. 
+     *
+     * @memberof CasinoControls
+     */
     changeStatusMoneda = (denominacion: number) => {
         this.setState({
             monedas: this.state.monedas.map(moneda => (moneda.denominacion === denominacion ? { ...moneda, activo: !moneda.activo } : moneda))
         });
+    }
+
+    cobrarCreditos = () => {
+        if (this.props.creditosTotales < 1) {
+            this.props.showError("No tienes créidtos");
+            return;
+        }
+        const monedasActivas = this.state.monedas.filter(moneda => moneda.activo === true).map(moneda => moneda.denominacion);
+        // Siempre agregar la moneda de 1
+        monedasActivas.push(1);
+
+        // Ordenar mayor a menor
+        monedasActivas.sort((a, b) => b - a);
+
+        let tmpCreditos: number = 0;
+        const resultadoMonedas: any = {};
+        while (tmpCreditos !== this.props.creditosTotales) {
+            for (let i: number = 0; i < monedasActivas.length; i++) {
+                if ((tmpCreditos + monedasActivas[i]) <= this.props.creditosTotales) {
+                    tmpCreditos += monedasActivas[i];
+                    resultadoMonedas[monedasActivas[i]] = !(resultadoMonedas[monedasActivas[i]]) ? 1 : resultadoMonedas[monedasActivas[i]] + 1;
+                    break;
+                }
+            }
+        }
+
+        this.setState({
+            resultadoMonedas
+        })
+
+        console.log(Object.values(resultadoMonedas))
     }
 
     render() {
@@ -99,11 +139,13 @@ class CasinoControls extends React.Component<CasinoControlsProps, {}> {
                 <div className="divider"></div>
                 <div className="cobrar-creditos-container">
                     <div>
-                        <button type="button" className="boton-cobrar">Cobrar</button>
+                        <button type="button" className="boton-cobrar" onClick={this.cobrarCreditos}>Cobrar</button>
                     </div>
                     <div className="creditos-cobrados-result">
-                        creditos-cobrados
-                </div>
+                        {Object.entries(this.state.resultadoMonedas).map(([key, value]) => ({ key, value })).map((item) => {
+                            return <div key={item.key}> Moneda: {item.key} | Cantidad: {item.value}</div>
+                        })}
+                    </div>
                 </div>
 
             </div>

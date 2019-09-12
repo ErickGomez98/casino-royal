@@ -69,6 +69,8 @@ export default class Casino extends React.Component<CasinoProps, CasinoState> {
                 <div className="casino-controls-container">
                     <CasinoControls
                         creditosTotales={creditosTotales}
+                        showError={this.showErrorMsg}
+                        showSuccess={this.showSuccessMsg}
                         controlarCreditos={(creditos: number, type: number) => this.controlCredits(creditos, type)} />
                 </div>
                 <div className="casino-juego-container">
