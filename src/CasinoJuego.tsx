@@ -163,11 +163,17 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
         return (
             <div className="main-juego-container">
                 <div>
-                    <h2>Casino Juego</h2>
+                    <h2>CASINO | Juega por 7 créditos</h2>
                 </div>
                 <div className="caja-juego">
                     {results}
                     <Palanca onClickJugar={this.jugar} playing={playing} />
+                </div>
+
+                <div style={{marginTop: 40, fontSize: 20}}>
+                    <div style={{fontSize: 30}}>PREMIOS</div>
+                    <div>3 iguales: 85 créditos</div>
+                    <div>4 iguales: 125 créditos</div>
                 </div>
             </div>
         )
