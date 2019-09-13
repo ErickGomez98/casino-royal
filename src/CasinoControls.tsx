@@ -81,7 +81,7 @@ class CasinoControls extends React.Component<CasinoControlsProps, {}> {
 
     cobrarCreditos = () => {
         if (this.props.creditosTotales < 1) {
-            this.props.showError("No tienes créidtos");
+            this.props.showError("No tienes créditos");
             return;
         }
         const monedasActivas = this.state.monedas.filter(moneda => moneda.activo === true).map(moneda => moneda.denominacion);
