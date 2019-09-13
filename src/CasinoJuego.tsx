@@ -89,8 +89,8 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
      * @memberof CasinoJuego
      */
     generarResultadosRandom = () => {
-        const results: Array<Array<Number>> = [];
-        for (let i = 0; i < 50; i++) {
+        let results: Array<Array<Number>> = [];
+        for (let i = 0; i < 10; i++) {
             results.push(
                 [
                     Math.floor(Math.random() * 4) + 1,
@@ -101,30 +101,179 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
             )
         }
 
-        results.map((item, k) => {
-            let tpl: any = [];
-            for (let i = 0; i < item.length; i++) {
-                switch (item[i]) {
+        results = [
+            [1,1,2,2,1,4,1,2,3,2,1],
+            [2,3,4,2,3,4,1,2,3,4,2],
+            [4,2,1,2,3,2,4,1,2,3,2],
+            [3,2,1,4,1,2,2,3,4,2,1],
+        ];
+
+        let xd: Array<Number> = [];
+
+        let aaa: Array<Array<Number>> = [];
+
+        results.map((v, k) => {
+            // la idea es que cada vuelta asi con ese array va a mostrar de cada slot por slot, y cuando finalice uno
+            // pues se deberia de quedar ese asi renderizado y no eliminarlo, ese es el pedo xd.
+            v.map((i, n) => {
+
+                xd[k] = i;
+                console.log(xd);
+                const qggg = [...xd];
+                //aaa = [...aaa, xd];
+                aaa.push(qggg)
+                
+            });
+        });
+
+
+        // Ahora lo que vale aaa tiene todas las combinaciones, creo que ahora lo que tengo que hacer es un .map sobre aaa
+        // donde en cada vuelta del ciclo voy a hacer el tpl.push que ya tenia, de esta manera al inicio solo va a agregar
+        // un elemento a la vez, y al finalizar pues ya va a agregar todos los demas elementos pero los primeros tambien los
+        // estaria renderizando otra vez pero como el valor ya no se mueve entonces no debería de afectar.
+
+        // debera de ser un map adentro de un map, en el map grande se regresa el tpl completo al state, y en el map de adentro se va
+        // construyendo el tpl, tonces para sacar el timeout deberia de ser creo multiplicar los indices de cada map y sumarle los ms
+        // para el timeout
+
+        console.log(aaa);
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        for(let j = 0; j < 4; j++){
+            results.map((item, k) => {
+
+                let tpl: any = [];
+                if(j === 0){
+                    switch (item[j]) {
+                        case 1:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                            break;
+                        case 2:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={seven} />)
+                            break;
+                        case 3:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={cherry} />)
+                            break;
+                        case 4:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bar} />)
+                            break;
+                    }                    
+                }else if(j === 1){
+                    tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                    switch (item[j]) {
+                        case 1:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                            break;
+                        case 2:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={seven} />)
+                            break;
+                        case 3:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={cherry} />)
+                            break;
+                        case 4:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bar} />)
+                            break;
+                    }    
+                } else if (j === 2) {
+                    tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                    tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                    switch (item[j]) {
+                        case 1:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                            break;
+                        case 2:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={seven} />)
+                            break;
+                        case 3:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={cherry} />)
+                            break;
+                        case 4:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bar} />)
+                            break;
+                    }
+                } else if (j === 3) {
+                    tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                    tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                    tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                    switch (item[j]) {
+                        case 1:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                            break;
+                        case 2:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={seven} />)
+                            break;
+                        case 3:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={cherry} />)
+                            break;
+                        case 4:
+                            tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bar} />)
+                            break;
+                    }
+                }
+
+/*                
+                switch (item[j]) {
                     case 1:
-                        tpl.push(<CasinoJuegoSlot key={i} bg={bell} />)
+                        tpl.push(<CasinoJuegoSlot key={j} bg={bell} />)
                         break;
                     case 2:
-                        tpl.push(<CasinoJuegoSlot key={i} bg={seven} />)
+                        tpl.push(<CasinoJuegoSlot key={j} bg={seven} />)
                         break;
                     case 3:
-                        tpl.push(<CasinoJuegoSlot key={i} bg={cherry} />)
+                        tpl.push(<CasinoJuegoSlot key={j} bg={cherry} />)
                         break;
                     case 4:
-                        tpl.push(<CasinoJuegoSlot key={i} bg={bar} />)
+                        tpl.push(<CasinoJuegoSlot key={j} bg={bar} />)
                         break;
                 }
-            }
-            setTimeout(() => {
-                this.setState({
-                    results: tpl
-                });
-            }, k * 50);
-        })
+*/
+                /*
+                for (let i = 0; i < item.length; i++) {
+                    switch (item[i]) {
+                        case 1:
+                            tpl.push(<CasinoJuegoSlot key={i} bg={bell} />)
+                            break;
+                        case 2:
+                            tpl.push(<CasinoJuegoSlot key={i} bg={seven} />)
+                            break;
+                        case 3:
+                            tpl.push(<CasinoJuegoSlot key={i} bg={cherry} />)
+                            break;
+                        case 4:
+                            tpl.push(<CasinoJuegoSlot key={i} bg={bar} />)
+                            break;
+                    }
+                }
+                */
+                setTimeout(() => {
+                    this.setState({
+                        results: tpl
+                    });
+                }, j * 500);
+            })
+        }
+        
 
         setTimeout(() => {
             this.setState({
@@ -155,11 +304,12 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
                     this.props.showSuccess("Has ganado 125 créditos!")
                 }
             }
-        }, (results.length) * 50);
+        }, (results.length) * 500);
     }
 
     render() {
         const { playing, results } = this.state;
+        
         return (
             <div className="main-juego-container">
                 <div>
