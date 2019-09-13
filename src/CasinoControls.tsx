@@ -106,6 +106,8 @@ class CasinoControls extends React.Component<CasinoControlsProps, {}> {
         this.setState({
             resultadoMonedas
         })
+
+        this.props.controlarCreditos(this.props.creditosTotales, 2);
     }
 
     render() {
