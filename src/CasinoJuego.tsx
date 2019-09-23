@@ -46,13 +46,19 @@ type CasinoJuegoProps = {
 
 type CasinoState = {
     playing: boolean;
-    results: any;
+    results1: any;
+    results2: any;
+    results3: any;
+    results4: any;
 }
 
 class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
     state: CasinoState = {
         playing: false,
-        results: []
+        results1: [],
+        results2: [],
+        results3: [],
+        results4: []
     }
 
     /**
@@ -89,63 +95,131 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
      * @memberof CasinoJuego
      */
     generarResultadosRandom = () => {
-        let results: Array<Array<Number>> = [];
-        for (let i = 0; i < 4; i++) {
-            let tmpResult: Array<Number> = [];
-            for (let j = 0; j < 30; j++) {
-                tmpResult.push(
-                    Math.floor(Math.random() * 4) + 1,
-                )
+        let r1: number[] = [];
+        let r2: number[] = [];
+        let r3: number[] = [];
+        let r4: number[] = [];
+        for (let j = 0; j < 30; j++) {
+            r1.push(
+                Math.floor(Math.random() * 4) + 1,
+            )
+        }
+        for (let j = 0; j < 40; j++) {
+            r2.push(
+                Math.floor(Math.random() * 4) + 1,
+            )
+        }
+        for (let j = 0; j < 50; j++) {
+            r3.push(
+                Math.floor(Math.random() * 4) + 1,
+            )
+        }
+        for (let j = 0; j < 60; j++) {
+            r4.push(
+                Math.floor(Math.random() * 4) + 1,
+            )
+        }
+        r1.map((item, k) => {
+            let tmpT: any = [];
+            switch (item) {
+                case 1:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                    break;
+                case 2:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={seven} />)
+                    break;
+                case 3:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={cherry} />)
+                    break;
+                case 4:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={bar} />)
+                    break;
             }
 
-            results.push(tmpResult);
-        }
-
-        let tmp: Array<Number> = [];
-
-        let tmpResults: Array<Array<Number>> = [];
-
-        results.map((v, k) => {
-            v.map(i => {
-                tmp[k] = i;
-                const tmpIntern = [...tmp];
-                tmpResults.push(tmpIntern)
-            });
-        });
-
-        tmpResults.map((v, k) => {
-            let tpl: any = [];
-            v.map(vv => {
-                switch (vv) {
-                    case 1:
-                        tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
-                        break;
-                    case 2:
-                        tpl.push(<CasinoJuegoSlot key={Math.random()} bg={seven} />)
-                        break;
-                    case 3:
-                        tpl.push(<CasinoJuegoSlot key={Math.random()} bg={cherry} />)
-                        break;
-                    case 4:
-                        tpl.push(<CasinoJuegoSlot key={Math.random()} bg={bar} />)
-                        break;
-                }
-            })
             setTimeout(() => {
                 this.setState({
-                    results: tpl
+                    results1: tmpT
                 })
-
             }, k * 100);
-        });
+        })
 
+        r2.map((item, k) => {
+            let tmpT: any = [];
+            switch (item) {
+                case 1:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                    break;
+                case 2:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={seven} />)
+                    break;
+                case 3:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={cherry} />)
+                    break;
+                case 4:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={bar} />)
+                    break;
+            }
+
+            setTimeout(() => {
+                this.setState({
+                    results2: tmpT
+                })
+            }, k * 100);
+        })
+
+        r3.map((item, k) => {
+            let tmpT: any = [];
+            switch (item) {
+                case 1:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                    break;
+                case 2:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={seven} />)
+                    break;
+                case 3:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={cherry} />)
+                    break;
+                case 4:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={bar} />)
+                    break;
+            }
+
+            setTimeout(() => {
+                this.setState({
+                    results3: tmpT
+                })
+            }, k * 100);
+        })
+
+        r4.map((item, k) => {
+            let tmpT: any = [];
+            switch (item) {
+                case 1:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={bell} />)
+                    break;
+                case 2:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={seven} />)
+                    break;
+                case 3:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={cherry} />)
+                    break;
+                case 4:
+                    tmpT.push(<CasinoJuegoSlot key={Math.random()} bg={bar} />)
+                    break;
+            }
+
+            setTimeout(() => {
+                this.setState({
+                    results4: tmpT
+                })
+            }, k * 100);
+        })
 
         setTimeout(() => {
             this.setState({
                 playing: false
             })
-
-            const lastResult = tmpResults[tmpResults.length - 1];
+            const lastResult = [r1[r1.length - 1], r2[r2.length - 1], r3[r3.length - 1], r4[r4.length - 1]];
             let isResult: number = 0;
             for (let i = 0; i < lastResult.length; i++) {
                 let count = 0;
@@ -160,7 +234,6 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
             }
 
             if (isResult > 0) {
-                console.log(isResult);
                 if (isResult === 3) {
                     this.props.showSuccess("Has ganado 85 créditos!");
                     this.props.controlarCreditos(85, 1);
@@ -169,11 +242,10 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
                     this.props.showSuccess("Has ganado 125 créditos!")
                 }
             }
-        }, (tmpResults.length) * 100);
+        }, (r4.length) * 100);
     }
-
     render() {
-        const { playing, results } = this.state;
+        const { playing, results1, results2, results3, results4 } = this.state;
 
         return (
             <div className="main-juego-container">
@@ -181,7 +253,10 @@ class CasinoJuego extends React.Component<CasinoJuegoProps, CasinoState> {
                     <h2>CASINO | Juega por 7 créditos</h2>
                 </div>
                 <div className="caja-juego">
-                    {results}
+                    {results1}
+                    {results2}
+                    {results3}
+                    {results4}
                     <Palanca onClickJugar={this.jugar} playing={playing} />
                 </div>
 
