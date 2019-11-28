@@ -1,43 +1,49 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
-body, html {
-  font-family: 'Roboto', sans-serif;
-  background: #282C34;
+body,
+html {
+  font-family: "Roboto", sans-serif;
+  background: #282c34;
   color: #fff;
 }
 
 .casino-main-container {
   width: 90%;
-  margin: 20px;
 }
 
-.casino-controls-container, .casino-juego-container {
+.casino-controls-container,
+.casino-juego-container {
   width: 50%;
   float: left;
 }
 
-.main-controles-container, .monedas-container {
+.casino-juego-container {
+  margin: 200px 0 0 550px;
+}
+
+.main-controles-container,
+.monedas-container {
   width: 100%;
 }
 
 .monedas-container .moneda {
   width: 50px;
   height: 50px;
-  float:left;
+  float: left;
   text-align: center;
-  border: 5px solid #B76A04;
+  border: 5px solid #b76a04;
   border-radius: 50%;
   vertical-align: middle;
-  background: #F1B834;
+  background: #f1b834;
   margin: 0 10px;
   position: relative;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .moneda-txt {
   text-align: center;
-  color: #B76A04;
+  color: #b76a04;
   font-weight: 600;
   font-size: 20px;
   margin: auto;
@@ -49,11 +55,11 @@ body, html {
 }
 
 .monedas-container .moneda:hover {
-  -webkit-box-shadow: 2px 2px 2px 2px #ADADAD;
-  box-shadow: 2px 2px 2px 2px #ADADAD;
+  -webkit-box-shadow: 2px 2px 2px 2px #adadad;
+  box-shadow: 2px 2px 2px 2px #adadad;
 }
 
-.divider{
+.divider {
   width: 100%;
   height: 2px;
   background: #c3c3c3;
@@ -61,22 +67,25 @@ body, html {
   margin: 20px 0;
 }
 
-.creditos-selector-container, .creditos-totales-container, .cobrar-creditos-container, .creditos-cobrados-result {
+.creditos-selector-container,
+.creditos-totales-container,
+.cobrar-creditos-container,
+.creditos-cobrados-result {
   width: 100%;
-  float:left;
+  float: left;
 }
 
 .creditos-selector-container .creditos-select-item {
   width: 50px;
   height: 50px;
-  background: #F2F2F2;
+  background: #f2f2f2;
   float: left;
   margin: 0 10px;
   text-align: center;
   border-radius: 2px;
-  -webkit-box-shadow: 1px 1px 1px 1px #ADADAD;
-  box-shadow: 1px 1px 1px 1px #ADADAD;
-  transition: all .3s;
+  -webkit-box-shadow: 1px 1px 1px 1px #adadad;
+  box-shadow: 1px 1px 1px 1px #adadad;
+  transition: all 0.3s;
   cursor: pointer;
   color: rgb(121, 121, 121);
   font-size: 20px;
@@ -84,8 +93,8 @@ body, html {
 }
 
 .creditos-selector-container .creditos-select-item:hover {
-  -webkit-box-shadow: 2px 2px 2px 2px #ADADAD;
-  box-shadow: 2px 2px 2px 2px #ADADAD;
+  -webkit-box-shadow: 2px 2px 2px 2px #adadad;
+  box-shadow: 2px 2px 2px 2px #adadad;
 }
 
 .creditos-selector-container .creditos-select-item div {
@@ -96,18 +105,18 @@ body, html {
   float: left;
 }
 
-.creditos-totales{
+.creditos-totales {
   margin-left: 20px;
-    font-size: 25px;
-    font-weight: 800;
-    color: #28A745;
-    padding: 20px;
+  font-size: 25px;
+  font-weight: 800;
+  color: #28a745;
+  padding: 20px;
 }
 
 .boton-cobrar {
   width: 200px;
   height: 30px;
-  background: #28A745;
+  background: #28a745;
   border: none;
   text-align: center;
   text-decoration: none;
@@ -116,12 +125,12 @@ body, html {
   font-size: 20px;
   font-weight: 400;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
-.boton-cobrar:hover{
-  -webkit-box-shadow: 2px 2px 2px 2px #ADADAD;
-  box-shadow: 2px 2px 2px 2px #ADADAD;
+.boton-cobrar:hover {
+  -webkit-box-shadow: 2px 2px 2px 2px #adadad;
+  box-shadow: 2px 2px 2px 2px #adadad;
 }
 
 .creditos-cobrados-result {
@@ -129,32 +138,32 @@ body, html {
 }
 
 .main-juego-container {
-  float:left;
-  margin:0 40px;
+  float: left;
+  margin: 0 40px;
   width: 100%;
 }
 
 .caja-juego {
   height: 250px;
   width: 80%;
-  background: #FED233;
-  border: 4px solid #500A2E;
+  background: #fed233;
+  border: 4px solid #500a2e;
   border-radius: 50px;
-  box-shadow:inset -10px -7px 1px 1px #CDA728;
+  box-shadow: inset -10px -7px 1px 1px #cda728;
   position: relative;
 }
 
 .casino-juego-slot {
   background: #fff;
   height: 210px;
-  width: 17%;
+  width: 25%;
   margin: 20px;
   float: left;
-  border: 4px solid #500A2E;
+  border: 4px solid #500a2e;
   border-radius: 50px;
 }
 .medio-circulo {
-  background: #6CCEE9;
+  background: #6ccee9;
   height: 100px;
   width: 100px;
   position: absolute;
@@ -162,50 +171,52 @@ body, html {
   right: -6%;
   z-index: -1;
   border-radius: 50%;
-  border: 4px solid #500A2E;
-  -webkit-box-shadow:inset -10px -10px 1px 1px #59A6BA;
-  box-shadow:inset -10px -10px 1px 1px #59A6BA;
+  border: 4px solid #500a2e;
+  -webkit-box-shadow: inset -10px -10px 1px 1px #59a6ba;
+  box-shadow: inset -10px -10px 1px 1px #59a6ba;
 }
 
 .palanca {
-    position: absolute;
-    top: 9%;
-    right: -8%;
-    background: #6CCEE9;
-    width: 25px;
-    height: 130px;
-    box-shadow:inset -10px -10px 1px 1px #59A6BA;
-    border: 4px solid #500A2E;
-    border-radius: 30%;
-    transition: all .3s;
-    cursor: pointer;
+  position: absolute;
+  top: 9%;
+  right: -8%;
+  background: #6ccee9;
+  width: 25px;
+  height: 130px;
+  box-shadow: inset -10px -10px 1px 1px #59a6ba;
+  border: 4px solid #500a2e;
+  border-radius: 30%;
+  transition: all 0.3s;
+  cursor: pointer;
 }
 
 .palanca-head {
-    position: absolute;
-    top: -16%;
-    right: -10%;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: red;
-    box-shadow:inset -6px -6px 1px 1px #BD3343;
-    border: 4px solid #500A2E;
-    transition: all .3s;
-    cursor: pointer;
+  position: absolute;
+  top: -16%;
+  right: -10%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: red;
+  box-shadow: inset -6px -6px 1px 1px #bd3343;
+  border: 4px solid #500a2e;
+  transition: all 0.3s;
+  cursor: pointer;
 }
-
 
 .palanca.active {
   top: 45%;
 }
 
-.palanca-head.active{
+.palanca-head.active {
   top: 93%;
 }
 
-.casino-juego-slot img{
-  margin: 50% 10%;
-  transition: all .3s;
+.casino-juego-slot h1 {
+  margin: 35% 10%;
+  transition: all 0.3s;
   max-width: 80%;
+  color: #282c34;
+  text-align: center;
+  font-size: 75px;
 }
